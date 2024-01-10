@@ -12,10 +12,9 @@ public class Main {
 
 
         for(Persona p : personas)
-            System.out.println(p);
-//            p.imprimirDNI();
-//
-//        System.out.println(((Directivo)personas[3]).getCargo());
+            p.imprimirDNI();
+
+        System.out.println(((Directivo)personas[3]).getCargo());
 
 
     }
