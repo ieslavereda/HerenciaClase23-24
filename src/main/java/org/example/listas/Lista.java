@@ -12,14 +12,20 @@ public class Lista {
         head = null;
         tail = null;
     }
+    public Lista(int[] nums) {
 
-    public Nodo getHead() {
-        return head;
+        this();
+        addAll(nums);
+
     }
 
-    public Nodo getTail() {
-        return tail;
-    }
+//    public Nodo getHead() {
+//        return head;
+//    }
+//
+//    public Nodo getTail() {
+//        return tail;
+//    }
 
     public Integer removeHead() {
 
@@ -86,29 +92,87 @@ public class Lista {
 
     public boolean contains(int num){
 
+        if(size==0) return false;
 
+        boolean encontrado=false;
+        Nodo aux = head;
+
+        while (aux!=null && !encontrado){
+
+            if(aux.info==num)
+                encontrado=true;
+
+            aux=aux.next;
+        }
+
+        return encontrado;
+    }
+
+    public Integer get(int index){
+
+        if(index<0) return null;
+        if(index>=size) return null;
+
+        Nodo n = head;
+        int i=0;
+
+        while (i++<index)
+            n=n.next;
+
+        return n.info;
 
     }
 
-//    public int get(int index){
-//
-//    }
-//
-//    public int remove(int index){
-//
-//    }
-//
-//    public void addAll(int[] nums){
-//
-//    }
-//
-//    public int[] getAsArray(){
-//
-//    }
-//
-//    public void clear(){
-//
-//    }
+    public Integer remove(int index){
+
+        if(index<0) return null;
+        if(index>=size) return null;
+        if(index==0) return removeHead();
+        if(index==size-1) return removeTail();
+
+        Nodo j=head, i=head.next;
+        int k=1;
+
+        while (k++<index){
+            j=i;
+            i=i.next;
+        }
+
+        j.next=i.next;
+        size--;
+
+        return i.info;
+    }
+
+    public void addAll(int[] nums){
+
+        for(int num : nums) addTail(num);
+
+    }
+
+    public int[] getAsArray(){
+
+        int[] aux = new int[size];
+
+        Nodo nodo = head;
+        int i=0;
+
+        while (nodo!=null) {
+            aux[i++] = nodo.info;
+
+            nodo=nodo.next;
+        }
+
+        return aux;
+    }
+
+    public void clear(){
+
+        tail=null;
+        head=null;
+        size=0;
+
+    }
 
 
     @Override
