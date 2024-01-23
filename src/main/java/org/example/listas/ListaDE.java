@@ -1,14 +1,74 @@
 package org.example.listas;
 
-public class ListaDE {
+public class ListaDE<E> {
 
     private int size;
-    private Nodo head;
-    private Nodo tail;
+    private Nodo<E> head;
+    private Nodo<E> tail;
 
-    public void addHead(int num){
+    public void addHead(E num) {
+
+        Nodo<E> nodo = new Nodo<E>(num);
+
+        if (size == 0 || head == null || tail == null) {
+
+            head = nodo;
+            tail = nodo;
+
+        } else {
+
+            nodo.next = head;
+            head.prev = nodo;
+
+            head = nodo;
+        }
+
+        size++;
 
 
+    }
+
+    public E removeHead(){
+
+        E aux;
+
+        if(size==0) return null;
+        if(size==1) {
+
+            aux = head.info;
+            head = null;
+            tail = null;
+
+        } else {
+
+            aux = head.info;
+            head = head.next;
+            head.prev=null;
+
+        }
+
+        size--;
+        return aux;
+
+    }
+
+    public void addTail(E num) {
+        Nodo<E> nodo = new Nodo<E>(num);
+
+        if (size == 0 || head == null || tail == null) {
+
+            head = nodo;
+            tail = nodo;
+
+        } else {
+
+            nodo.prev = tail;
+            tail.next = nodo;
+            tail = nodo;
+
+        }
+
+        size++;
     }
 
     @Override
@@ -24,9 +84,9 @@ public class ListaDE {
 
         }
 
-        aux+="\nValues: ";
+        aux += "\nValues: ";
 
-        n=tail;
+        n = tail;
         while (n != null) {
 
             aux += n.info + " ";
@@ -38,16 +98,16 @@ public class ListaDE {
         return aux;
     }
 
-    private class Nodo {
+    private class Nodo<E> {
 
-        private int info;
-        private Nodo next;
-        private Nodo prev;
+        private E info;
+        private Nodo<E> next;
+        private Nodo<E> prev;
 
-        public Nodo(int info) {
+        public Nodo(E info) {
             this.info = info;
-            next=null;
-            prev=null;
+            next = null;
+            prev = null;
         }
 
         @Override
