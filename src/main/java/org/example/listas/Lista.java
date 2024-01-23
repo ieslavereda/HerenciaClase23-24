@@ -1,10 +1,14 @@
 package org.example.listas;
 
-public class Lista {
+import org.example.ejercicio5.Vendedor;
+
+import java.lang.reflect.Array;
+
+public class Lista<E> {
 
     private int size;
-    private Nodo head;
-    private Nodo tail;
+    private Nodo<E> head;
+    private Nodo<E> tail;
 
 
     public Lista() {
@@ -12,7 +16,7 @@ public class Lista {
         head = null;
         tail = null;
     }
-    public Lista(int[] nums) {
+    public Lista(E[] nums) {
 
         this();
         addAll(nums);
@@ -27,11 +31,11 @@ public class Lista {
 //        return tail;
 //    }
 
-    public Integer removeHead() {
+    public E removeHead() {
 
         if (head == null) return null;
 
-        int num = head.info;
+        E num = head.info;
         head = head.getNext();
         size--;
 
@@ -41,12 +45,12 @@ public class Lista {
 
     }
 
-    public Integer removeTail() {
+    public E removeTail() {
 
         if(size==0 || head==null || tail == null) return null;
         if(size == 1 || head == tail ) return removeHead();
 
-        Nodo j=head, i=head.next;
+        Nodo<E> j=head, i=head.next;
 
         while (i!=tail || i.next!=null){
             j=i;
@@ -61,9 +65,9 @@ public class Lista {
 
     }
 
-    public void addHead(int num) {
+    public void addHead(E num) {
 
-        Nodo nodo = new Nodo(num);
+        Nodo<E> nodo = new Nodo<>(num);
 
         if (size == 0) {
             tail = nodo;
@@ -76,9 +80,9 @@ public class Lista {
 
     }
 
-    public void addTail(int num) {
+    public void addTail(E num) {
 
-        Nodo nodo = new Nodo(num);
+        Nodo<E> nodo = new Nodo<>(num);
 
         if (size == 0) {
             head = nodo;
@@ -90,7 +94,7 @@ public class Lista {
         size++;
     }
 
-    public boolean contains(int num){
+    public boolean contains(E num){
 
         if(size==0) return false;
 
@@ -99,7 +103,7 @@ public class Lista {
 
         while (aux!=null && !encontrado){
 
-            if(aux.info==num)
+            if(aux.info.equals(num))
                 encontrado=true;
 
             aux=aux.next;
@@ -108,12 +112,12 @@ public class Lista {
         return encontrado;
     }
 
-    public Integer get(int index){
+    public E get(int index){
 
         if(index<0) return null;
         if(index>=size) return null;
 
-        Nodo n = head;
+        Nodo<E> n = head;
         int i=0;
 
         while (i++<index)
@@ -123,14 +127,14 @@ public class Lista {
 
     }
 
-    public Integer remove(int index){
+    public E remove(int index){
 
         if(index<0) return null;
         if(index>=size) return null;
         if(index==0) return removeHead();
         if(index==size-1) return removeTail();
 
-        Nodo j=head, i=head.next;
+        Nodo<E> j=head, i=head.next;
         int k=1;
 
         while (k++<index){
@@ -144,17 +148,18 @@ public class Lista {
         return i.info;
     }
 
-    public void addAll(int[] nums){
+    public void addAll(E[] nums){
 
-        for(int num : nums) addTail(num);
+        for(E num : nums) addTail(num);
 
     }
 
-    public int[] getAsArray(){
+    public E[] getAsArray(Class clazz){
 
-        int[] aux = new int[size];
 
-        Nodo nodo = head;
+        E[] aux = (E[]) Array.newInstance(clazz, size);
+
+        Nodo<E> nodo = head;
         int i=0;
 
         while (nodo!=null) {
@@ -164,6 +169,7 @@ public class Lista {
         }
 
         return aux;
+
     }
 
     public void clear(){
@@ -193,24 +199,25 @@ public class Lista {
 
     }
 
-    private class Nodo {
-        private int info;
+    private class Nodo<E> {
+
+        private E info;
         private Nodo next;
 
-        public Nodo(int info) {
+        public Nodo(E info) {
             this.info = info;
             this.next = null;
         }
 
-        public Nodo getNext() {
+        public Nodo<E> getNext() {
             return next;
         }
 
-        public void setNext(Nodo next) {
+        public void setNext(Nodo<E> next) {
             this.next = next;
         }
 
-        public int getInfo() {
+        public E getInfo() {
             return info;
         }
 

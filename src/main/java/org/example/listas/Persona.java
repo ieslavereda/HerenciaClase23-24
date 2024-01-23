@@ -11,10 +11,18 @@ public class Persona {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(obj==null) return false;
+        if(!(obj instanceof Persona)) return false;
+
+        Persona p = (Persona) obj;
+
+        return nombre.equals(p.nombre) && apellidos.equals(p.apellidos);
+    }
+
+    @Override
     public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                '}';
+        return "{nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos +"}";
     }
 }

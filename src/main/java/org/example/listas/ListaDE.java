@@ -1,5 +1,7 @@
 package org.example.listas;
 
+import java.lang.reflect.Array;
+
 public class ListaDE<E> {
 
     private int size;
@@ -27,6 +29,46 @@ public class ListaDE<E> {
 
 
     }
+
+    public E[] getAsArray(Class clazz){
+
+
+        E[] aux = (E[])Array.newInstance(clazz, size);
+
+        Nodo<E> nodo = head;
+        int i=0;
+
+        while (nodo!=null) {
+            aux[i++] = nodo.info;
+
+            nodo=nodo.next;
+        }
+
+        return aux;
+
+    }
+
+    public E[] getAsArray(){
+
+        if(head==null) return null;
+
+        Class clazz = head.info.getClass();
+
+        E[] aux = (E[])Array.newInstance(clazz, size);
+
+        Nodo<E> nodo = head;
+        int i=0;
+
+        while (nodo!=null) {
+            aux[i++] = nodo.info;
+
+            nodo=nodo.next;
+        }
+
+        return aux;
+
+    }
+
 
     public E removeHead(){
 
