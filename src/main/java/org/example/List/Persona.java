@@ -1,18 +1,21 @@
-package org.example.listas;
+package org.example.List;
 
 public class Persona {
 
     private String nombre;
     private String apellidos;
 
-
     public Persona(String nombre, String apellidos) {
         this.nombre = nombre;
         this.apellidos = apellidos;
     }
+    public String getNombre() {
+        return nombre;
+    }
 
-
-
+    public String getApellidos() {
+        return apellidos;
+    }
     @Override
     public boolean equals(Object obj) {
         if(obj==null) return false;
@@ -26,7 +29,6 @@ public class Persona {
     @Override
     public String toString() {
         return "{nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos +"'}";
-
+                ", apellidos='" + apellidos +"}";
     }
 }
