@@ -8,16 +8,18 @@ public class Main {
 
 
         Bombo bombo = new Bombo();
+        Soporte soporte= new Soporte();
+
         bombo.initialize();
         bombo.shuffle();
 
-//        bombo.addBall(new Ball(5));
-//        bombo.addBall(new Ball(15));
-//        bombo.addBall(new Ball(5));
+        System.out.println(bombo);
 
-        System.out.println(bombo);
-        System.out.println(bombo.getBall());
-        System.out.println(bombo);
+        for(int i=0;i<10;i++)
+            soporte.add(bombo.getBall());
+
+        System.out.println(soporte.getList());
+        System.out.println(soporte.getSortedList());
 
     }
 }

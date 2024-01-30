@@ -1,11 +1,15 @@
 package org.example.Set.exercise;
 
-public class Ball {
+public class Ball implements Comparable<Ball> {
 
     private int numero;
 
     public Ball(int numero) {
         this.numero = numero;
+    }
+
+    public int getNumero() {
+        return numero;
     }
 
     @Override
@@ -26,5 +30,11 @@ public class Ball {
     @Override
     public String toString() {
         return  String.valueOf(numero) ;
+    }
+
+
+    @Override
+    public int compareTo(Ball ball) {
+        return numero-ball.numero;
     }
 }
