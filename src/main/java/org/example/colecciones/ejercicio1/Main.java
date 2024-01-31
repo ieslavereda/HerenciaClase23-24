@@ -21,7 +21,9 @@ public class Main {
         System.out.println(almacen);
 
         almacen.showSortedCountriesList();
-        almacen.showEmployeeSortedList();
+        almacen.showCountryEmployeeList();
+
+
 
 
 

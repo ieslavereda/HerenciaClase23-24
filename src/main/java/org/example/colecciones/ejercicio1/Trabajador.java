@@ -1,6 +1,6 @@
 package org.example.colecciones.ejercicio1;
 
-public class Trabajador {
+public class Trabajador implements Comparable<Trabajador>{
 
     private String nombre;
     private int edad;
@@ -36,5 +36,10 @@ public class Trabajador {
     public String toString() {
         return  "nombre='" + nombre + '\'' +
                 ", edad=" + edad;
+    }
+
+    @Override
+    public int compareTo(Trabajador t) {
+        return nombre.compareTo(t.nombre);
     }
 }
