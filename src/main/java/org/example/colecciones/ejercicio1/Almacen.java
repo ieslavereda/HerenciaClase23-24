@@ -33,6 +33,35 @@ public class Almacen {
 
     }
 
+//    public void showEmployeeSortedList(){
+//
+//        List<Trabajador> list = new ArrayList<>();
+//
+//        for(Set<Trabajador> set : trabajadores.values()){
+//            // list.addAll(set);
+//            for(Trabajador t : set)
+//                list.add(t);
+//        }
+//
+//        //list.sort((t1,t2)->t1.getNombre().compareTo(t2.getNombre()));
+//        list.sort(new Comparator<Trabajador>() {
+//            @Override
+//            public int compare(Trabajador t1, Trabajador t2) {
+//                return t1.getNombre().compareTo(t2.getNombre());
+//            }
+//        });
+//
+//        System.out.println(list);
+//
+//    }
+
+    public void showEmployeeSortedList(){
+
+
+
+
+    }
+
     @Override
     public String toString() {
         return "Almacen{" +
