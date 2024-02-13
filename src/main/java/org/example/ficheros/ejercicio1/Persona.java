@@ -1,6 +1,8 @@
 package org.example.ficheros.ejercicio1;
 
-public class Persona {
+import java.io.Serializable;
+
+public class Persona implements Serializable {
 
     private String nombre;
     private String apellidos;
@@ -10,6 +12,18 @@ public class Persona {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override

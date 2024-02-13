@@ -1,9 +1,6 @@
 package org.example.ficheros.ejercicio1;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +33,26 @@ public class ListarCSV {
 
 
         System.out.println(personaList);
+
+        personaList.add(new Persona(
+                "Juan","Lopez","j.lopez@edu.gva.es"
+        ));
+
+
+        guardar(personaList);
+    }
+
+    private static void guardar(List<Persona> personaList) {
+
+        try(PrintWriter pw = new PrintWriter(new FileWriter("nuevo.csv"))){
+
+            for(Persona p : personaList)
+                pw.println(p.getNombre()+";"+p.getApellidos()+";"+p.getEmail());
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
