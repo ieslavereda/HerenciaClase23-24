@@ -1,6 +1,6 @@
 package org.example.ficheros;
 
-import org.example.ficheros.ejercicio1.Persona;
+import org.example.ficheros.ejercicioEjemplo.Persona;
 
 import java.io.*;
 

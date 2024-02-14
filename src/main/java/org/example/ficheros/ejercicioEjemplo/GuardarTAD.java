@@ -1,7 +1,4 @@
-package org.example.ficheros.ejercicio1;
-
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+package org.example.ficheros.ejercicioEjemplo;
 
 public class GuardarTAD {
 

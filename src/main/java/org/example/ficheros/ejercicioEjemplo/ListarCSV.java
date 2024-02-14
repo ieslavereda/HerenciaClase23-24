@@ -1,4 +1,4 @@
-package org.example.ficheros.ejercicio1;
+package org.example.ficheros.ejercicioEjemplo;
 
 import java.io.*;
 import java.util.ArrayList;
