@@ -23,7 +23,8 @@ public class Ejercicio2 {
 
         int max = integerList.stream()
                 .max((o1, o2) -> o1-o2)
-                .get();
+                .get()
+                ;
         int min = integerList.stream()
                 .min((o1, o2) -> o1-o2)
                 .get();
